@@ -1,0 +1,26 @@
+---
+name: CI
+
+on: push
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        elixir-version: [1.11, 1.12, 1.13, 1.14]
+    container: elixir:${{ matrix.elixir-version }}-alpine
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          apk add --update bash git build-base
+          mix local.hex --force && mix local.rebar --force
+          mix deps.get
+
+      - name: Run linters and tests
+        env:
+          MIX_ENV: test
+        run: mix ci
