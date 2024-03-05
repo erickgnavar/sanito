@@ -5,7 +5,7 @@ defmodule Sanito.MixProject do
     [
       app: :sanito,
       version: "0.1.0",
-      elixir: "~> 1.11",
+      elixir: "~> 1.12",
       description: "Plug health check module",
       package: package(),
       start_permanent: Mix.env() == :prod,
