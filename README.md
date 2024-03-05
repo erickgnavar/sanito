@@ -1,6 +1,6 @@
 # Sanito
 
-**TODO: Add description**
+Plug health check module, used for example for container healthcheck
 
 ## Installation
 
@@ -19,3 +19,25 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/sanito>.
 
+## Usage
+
+Define the `plug` module in `endpoint.ex`, this will expose an endpoint for health check, this endpoint won't send
+anything to the logger so it is safe to use without worrying about generating tons of dogs
+
+```elixir
+defmodule MyAppWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :my_app
+
+  ...
+
+  plug Sanito.Plug, path: "/health"
+  ...
+
+  plug Plug.RequestId
+  plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
+
+  ...
+
+  plug MyAppWeb.Router
+end
+```
