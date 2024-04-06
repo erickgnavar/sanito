@@ -22,7 +22,7 @@ be found at <https://hexdocs.pm/sanito>.
 ## Usage
 
 Define the `plug` module in `endpoint.ex`, this will expose an endpoint for health check, this endpoint won't send
-anything to the logger so it is safe to use without worrying about generating tons of dogs
+anything to the logger so it is safe to use without worrying about generating tons of logs.
 
 ```elixir
 defmodule MyAppWeb.Endpoint do
