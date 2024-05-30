@@ -30,7 +30,7 @@ defmodule MyAppWeb.Endpoint do
 
   ...
 
-  plug Sanito.Plug, path: "/health"
+  plug Sanito.Plug, path: "/health", plugins: [{Sanito.EctoPlugin, repo: MyApp.Repo}, MyCustomPlugin]
   ...
 
   plug Plug.RequestId
@@ -41,3 +41,5 @@ defmodule MyAppWeb.Endpoint do
   plug MyAppWeb.Router
 end
 ```
+
+Custom plugins must implement `Sanito.PluginBehaviour`.
