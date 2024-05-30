@@ -30,7 +30,7 @@ defmodule MyAppWeb.Endpoint do
 
   ...
 
-  plug Sanito.Plug, path: "/health", plugins: [{Sanito.EctoPlugin, repo: MyApp.Repo}, MyCustomPlugin]
+  plug Sanito.Plug, path: "/health", plugins: [{Sanito.Plugins.EctoPlugin, repo: MyApp.Repo}, MyCustomPlugin]
   ...
 
   plug Plug.RequestId
