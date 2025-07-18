@@ -9,7 +9,7 @@ on:
 jobs:
   publish-hexpm:
     name: publish to hex.pm
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       ImageOS: ubuntu20
     container: elixir:1.12-alpine
